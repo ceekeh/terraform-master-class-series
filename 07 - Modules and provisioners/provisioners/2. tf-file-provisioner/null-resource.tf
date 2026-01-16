@@ -7,7 +7,9 @@ resource "null_resource" "my_null_resource" {
     host        = aws_eip.ip.public_ip
     type        = "ssh"
     user        = var.instance_user
-    private_key = file("${path.module}/mykey/elk-instance.pem")
+    private_key = file("${path.module}/mykey/elk-instance.pem") #we used a path module to refer to the key file we used for ssh bc trfrm was instaled in the cloud ie ec2
+      #but the illustration we did in ansible, the key we used for ssh conection is in the downloads folder of his macbook, bc ansible was downloaded in his macbk
+  } 
   }
 
   provisioner "file" {
